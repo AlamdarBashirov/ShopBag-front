@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background: url('../../../../components/assets/images/intro-background-clothes-women.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    .container{
+        height: 30%;
+        width: 70%;
+        .textBox{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+            h1{
+                color: #DA5826;
+                font-size: 50px;
+            }
+            p{
+                font-size: 30px;
+            }
+            button{
+                padding: 15px 40px;
+                border-radius: 50px;
+                width: 175px;
+                color: white;
+                background-color: #2C3E50;
+                border: #2C3E50;
+                transition: .5s;
+                cursor: pointer;
+                &:hover{
+                    background-color: #DA5826;
+                    transition: .5s;
+                }
+            }
+        }
+    }
+}
