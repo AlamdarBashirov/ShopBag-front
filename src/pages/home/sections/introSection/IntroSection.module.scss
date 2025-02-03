@@ -15,7 +15,7 @@
     background-size: cover;
     .container{
         height: 30%;
-        width: 70%;
+        width: 77%;
         .textBox{
             display: flex;
             flex-direction: column;
@@ -42,6 +42,13 @@
                     transition: .5s;
                 }
             }
+        }
+    }
+}
+@media screen and (max-width:576px){
+    .section{
+        .container{
+            height: 60%;
         }
     }
 }

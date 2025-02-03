@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+    width: 100%;
+    padding: 40px 0px;
+    background-color: #f5f5f5;
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 90%;
+        width: 80%;
+        gap: 10px;
+
+        .scrollButton {
+            padding: 20px 10px;
+            background-color: #2C3E50;
+            color: white;
+            transition: .3s;
+            border: none;
+
+            &:hover {
+                background-color: #DA5826;
+                transition: .3s;
+            }
+        }
+
+        .sectionName {
+            height: 15%;
+        }
+
+        .cardBox {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 85%;
+            gap: 15px;
+
+            overflow-x: auto; // Yatay sürüşdürmə açılır
+            scroll-snap-type: x mandatory; // Kartların düzənli sürüşməsini təmin edir
+            padding-bottom: 10px;
+            scrollbar-width: none; // Brauzerin scrollbarını gizlədir (Firefoxa uyğun)
+            -ms-overflow-style: none; // IE və Edge üçün scrollbarı gizlədir
+
+            &::-webkit-scrollbar {
+                display: none; // Chrome və Safari üçün scrollbarı gizlədir
+            }
+
+            .card {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                gap: 20px;
+                width: 24%;
+                height: 80%;
+                -webkit-box-shadow: 5px 6px 15px 3px rgba(0, 0, 0, 0.55);
+                -moz-box-shadow: 5px 6px 15px 3px rgba(0, 0, 0, 0.55);
+                box-shadow: 5px 6px 15px 3px rgba(0, 0, 0, 0.55);
+
+                button {
+                    padding: 10px 40px;
+                    color: white;
+                    border-radius: 50px;
+                    background-color: #2C3E50;
+                    border: #2C3E50;
+                    cursor: pointer;
+                    transition: .3s;
+
+                    &:hover {
+                        background-color: #DA5826;
+                        border: #DA5826;
+                        transform: scale(1.1, 1.1);
+                        transition: .3s;
+                    }
+                }
+
+                min-width: 24%; // Sürüşdürərkən 4 kartın sabit qalmasını təmin edir
+                scroll-snap-align: start; // Kartları düzənli şəkildə oturtdurur
+                transition: transform 0.3s ease; // Yumşaq keçid effekti əlavə edir
+
+                &:hover {
+                    transform: scale(1.05, 1.05);
+                }
+
+                img {
+                    width: 90%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:380px) {
+    .section {
+        .container {
+            width: 90%;
+
+            .cardBox {
+                padding: 40px 0px;
+                height: auto;
+                .card {
+                    min-width: 100%;
+                    height: auto;
+                    border: 1px solid black;
+                    padding: 20px 0px;
+                    -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.55);
+                    -moz-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.55);
+                    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.55);
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width:381px) and (max-width:500px) {
+    .section {
+        .container {
+            width: 300px;
+            padding: 40px 0px;
+            .cardBox {
+                padding: 40px 0px;
+                height: auto;
+                .card {
+                    min-width: 100%;
+                    height: auto;
+                    padding: 20px 0px;
+                    border: 1px solid black;
+                    -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.55);
+                    -moz-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.55);
+                    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.55);
+                }
+            }
+        }
+    }
+}
+@media  screen and (min-width:501px) and (max-width:670px){
+    .section{
+        .container{
+            .cardBox{
+                .card{
+                    min-width: 47%;
+                }
+            }
+        }
+    }
+}
+@media screen and (min-width:671px) and (max-width:850px){
+    .section{
+        .container{
+            .cardBox{
+                gap: 25px;
+                .card{
+                    min-width: 30%;
+                }
+            }
+        }
+    }
+}

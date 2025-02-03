@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.section {
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0px;
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 80%;
+        width: 80%;
+        border: 1px solid black;
+
+        .card {
+            width: 30%;
+            border: 1px solid green;
+            height: 100%;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-box-shadow: inset 200px -200px 66px 179px rgba(0, 0, 0, 0.3);
+            -moz-box-shadow: inset 200px -200px 66px 179px rgba(0, 0, 0, 0.3);
+            box-shadow: inset 200px -200px 66px 179px rgba(0, 0, 0, 0.3);
+            h1{
+                color: white;
+            }
+        }
+
+        .men {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transition: 5s;
+            background: url("../../../../components/assets/images/mens-collection-background-2.jpg");
+            transition: .5s;
+            &:hover{
+                background-size: 110%;
+                transition: .5s;
+            }
+        }
+
+        .women {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background: url("../../../../components/assets/images/womens-collection-background.jpg");
+        }
+
+        .baby {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background: url("../../../../components/assets/images/baby-colection-background.jpg");
+        }
+    }
+}

@@ -10,12 +10,18 @@
     width: 100%;
     padding: 15px 0px;
     background-color: #2c3e50;
-    // background-color: orangered;
     .container{
         display: flex;
         align-items: center;
         justify-content: space-between;
         width: 80%;
+        .burgerMenu{
+            color: white;
+            display: none;
+            svg{
+                font-size: 30px;
+            }
+        }
         .logoBox{
             width: 13%;
             img{
@@ -29,7 +35,6 @@
                 align-items: center;
                 justify-content: space-between;
                 width: 100%;
-                // background-color: green;
                 li{
                     list-style: none;
                     a{
@@ -60,6 +65,125 @@
                     color: #DA5826;
                     transition: .5s;
                 }
+            }
+        }
+    }
+}
+@media screen and (max-width:400px){
+    .header{
+        .container{
+            width: 95%;
+            .burgerMenu{
+                display: flex;
+            }
+            .logoBox{
+                width: 35%;
+                margin-left: 40px;
+            }
+            .headerActions{
+                width: 30%;
+            }
+            .navigation{
+                display: none;
+            }
+        }
+    }
+}
+@media screen and (min-width:401px) and (max-width:480px){
+    .header{
+        .container{
+            width: 90%;
+            .burgerMenu{
+                display: flex;
+            }
+            .logoBox{
+                width: 25%;
+                margin-left: 40px;
+            }
+            .headerActions{
+                width: 25%;
+            }
+            .navigation{
+                display: none;
+            }
+        }
+    }
+}
+@media screen and (min-width:481px) and (max-width:576px){
+    .header{
+        .container{
+            width: 90%;
+            .burgerMenu{
+                display: flex;
+            }
+            .logoBox{
+                width: 25%;
+                margin-left: 40px;
+            }
+            .headerActions{
+                width: 25%;
+            }
+            .navigation{
+                display: none;
+            }
+        }
+    }
+}
+@media screen and (min-width:577px) and (max-width:768px){
+    .header{
+        .container{
+            width: 90%;
+            .burgerMenu{
+                display: flex;
+            }
+            .logoBox{
+                width: 20%;
+                margin-left: 40px;
+            }
+            .headerActions{
+                width: 20%;
+            }
+            .navigation{
+                display: none;
+            }
+        }
+    }
+}
+@media screen and (min-width:769px) and (max-width:830px){
+    .header{
+        .container{
+            width: 90%;
+            .navigation{
+                width: 60%;
+            }
+            .headerActions{
+                width: 15%;
+            }
+        }
+    }
+}
+@media screen and (min-width:830px) and (max-width:991px){
+    .header{
+        .container{
+            width: 90%;
+            .navigation{
+                width: 60%;
+            }
+            .headerActions{
+                width: 13%;
+            }
+        }
+    }
+}
+@media screen and (min-width:992px) and (max-width:1200px){
+    .header{
+        .container{
+            width: 90%;
+            .navigation{
+                width: 50%;
+            }
+            .headerActions{
+                width: 13%;
             }
         }
     }
