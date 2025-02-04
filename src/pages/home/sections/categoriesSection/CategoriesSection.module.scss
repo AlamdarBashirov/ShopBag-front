@@ -18,11 +18,9 @@
         justify-content: space-between;
         height: 80%;
         width: 80%;
-        border: 1px solid black;
-
         .card {
+            position: relative;
             width: 30%;
-            border: 1px solid green;
             height: 100%;
             text-align: center;
             display: flex;
@@ -34,33 +32,207 @@
             h1{
                 color: white;
             }
-        }
-
-        .men {
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            transition: 5s;
-            background: url("../../../../components/assets/images/mens-collection-background-2.jpg");
-            transition: .5s;
-            &:hover{
-                background-size: 110%;
+            button{
                 transition: .5s;
+                position: absolute;
+                bottom: 0;
+                width:100%;
+                color: white;
+                background-color: #2C3E50;
+                border: #2C3E50;
+                width: 0%;
+                font-size: 0px;
+                height: 50px;
+                cursor: pointer;
+                &:hover{
+                    background-color: #da5826;
+                }
+            }
+            &:hover{
+                button{
+                    transition: .5s;
+                    width: 100%;
+                    font-size: 20px;
+                    padding: 15px;
+                }
             }
         }
 
-        .women {
+        .men {
+            background: url("../../../../components/assets/images/mens-collection-background-2.jpg");
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
+        }
+
+        .women {
             background: url("../../../../components/assets/images/womens-collection-background.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         .baby {
+            background: url("../../../../components/assets/images/baby-colection-background.jpg");
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-            background: url("../../../../components/assets/images/baby-colection-background.jpg");
+        }
+    }
+}
+@media screen and (max-width:368px){
+    .section{
+        height: auto;
+        .container{
+            flex-direction: column;
+            height: auto;
+            .card{
+                margin: 15px 0px;
+                width: 100%;
+                height: 200px;
+            }
+        }
+    }
+}
+@media screen and (min-width:369px) and (max-width:450px){
+    .section{
+        height: auto;
+        .container{
+            flex-direction: column;
+            height: auto;
+            .card{
+                margin: 15px 0px;
+                width: 100%;
+                min-height: 250px;
+                max-height: 300px;
+            }
+        }
+    }
+}
+@media screen and (min-width:451px) and (max-width:576px){
+    .section{
+        height: auto;
+        .container{
+            flex-direction: column;
+            height: auto;
+            .card{
+                margin: 15px 0px;
+                width: 100%;
+                min-height: 300px;
+                max-height: 450px;
+            }
+        }
+    }
+}
+@media screen and (min-width:577px) and (max-width:690px){
+    .section{
+        height: auto;
+        .container{
+            flex-wrap: wrap;
+            height: auto;
+            width: 95%;
+            .card{
+                margin: 15px 0px;
+                width: 47%;
+                height: 250px;
+            }
+        }
+    }
+}
+@media screen and (min-width:691px) and (max-width:800px){
+    .section{
+        height: auto;
+        .container{
+            flex-wrap: wrap;
+            height: auto;
+            width: 95%;
+            .card{
+                margin: 15px 0px;
+                width: 47%;
+                height: 300px;
+            }
+        }
+    }
+}
+@media screen and (min-width:801px) and (max-width:991px){
+    .section{
+        height: auto;
+        .container{
+            flex-wrap: wrap;
+            height: auto;
+            width: 95%;
+            .card{
+                margin: 15px 0px;
+                width: 47%;
+                height: 350px;
+            }
+        }
+    }
+}
+@media screen and (min-width:992px) and (max-width:1080px){
+    .section{
+        height: auto;
+        .container{
+            height: auto;
+            width: 95%;
+            .card{
+                width: 310px;
+                height: 250px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width:1081px) and (max-width:1130px){
+    .section{
+        height: auto;
+        .container{
+            height: auto;
+            width: 95%;
+            .card{
+                width: 330px;
+                height: 270px;
+            }
+        }
+    }
+}
+    
+@media screen and (min-width:1131px) and (max-width:1200px){
+    .section{
+        height: auto;
+        .container{
+            height: auto;
+            width: 95%;
+            .card{
+                width: 350px;
+                height: 300px;
+            }
+        }
+    }
+}
+@media screen and (min-width:1201px) and  (max-width:1270px){
+    .section{
+        height: auto;
+        .container{
+            height: auto;
+            width: 95%;
+            .card{
+                width: 370px;
+                height: 320px;
+            }
+        }
+    }
+}
+@media screen and (min-width:1270px) and  (max-width:1320px){
+    .section{
+        height: auto;
+        .container{
+            height: auto;
+            width: 95%;
+            .card{
+                width: 390px;
+                height: 340px;
+            }
         }
     }
 }
