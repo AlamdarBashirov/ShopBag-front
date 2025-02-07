@@ -6,6 +6,8 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import style from './Header.module.scss'
 import logoWhite from '../.././assets/images/logo-white-theme.png'
 import { Link } from 'react-router-dom';
+import { FaMagnifyingGlass } from "react-icons/fa6";
+
 const Header = () => {
     return (
         <div className={style.header}>
@@ -31,7 +33,26 @@ const Header = () => {
                 <div className={style.headerActions}>
                     <FaRegUser />
                     <FaRegHeart />
-                    <RiShoppingCartLine />
+                    <Link to='/basket'>
+                        <RiShoppingCartLine />
+                    </Link>
+                </div>
+            </div>
+            <div className={style.bottomHeader}>
+                <div className={style.bottomContainer}>
+                    <div className={style.categories}>
+                        <ul>
+                            <li><a href="/categories/man">man</a></li>
+                            <li><a href="">woman</a></li>
+                            <li><a href="">baby</a></li>
+                        </ul>
+                    </div>
+                    <div className={style.search}>
+                        <input type="text" placeholder='axtar' />
+                        <button className={style.searchButton}>
+                            <FaMagnifyingGlass />
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

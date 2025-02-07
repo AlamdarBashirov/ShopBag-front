@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import style from './popularProductsSection.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProductsHomeThunk } from '../../../../redux/reducers/productSlice';
+import { getProductsHomeThunk, postProductsToBasketThunk } from '../../../../redux/reducers/productSlice';
 import PopularCard from './cards/PopularCard';
 
 const PopularProductsSection = () => {
@@ -15,6 +15,10 @@ const PopularProductsSection = () => {
     useEffect(() => {
         dispatch(getProductsHomeThunk());
     }, [dispatch]);
+
+    const AddBasket = (item) => {
+        dispatch(postProductsToBasketThunk(item))
+    }
 
     const scrollLeft = () => {
         if (cardBoxRef.current) {
@@ -42,7 +46,7 @@ const PopularProductsSection = () => {
                 )}
                 <div className={style.cardBox} ref={cardBoxRef}>
                     {products.map((item, index) => (
-                        <PopularCard key={item.id || index} item={item} />
+                        <PopularCard key={item.id || index} item={item} AddBasket={() => AddBasket(item)} />
                     ))}
                 </div>
                 {products.length > 4 && (
