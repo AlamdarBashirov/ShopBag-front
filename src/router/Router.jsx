@@ -4,6 +4,10 @@ import Home from '../pages/home/Home'
 import Basket from '../pages/basket/Basket'
 import ManCollegtion from '../pages/categories/manCollegtion/ManCollegtion'
 import NotFoundPage from '../pages/notFoundPage/NotFoundPage'
+import Register from '../pages/registration/registerPage/Register'
+import LoginPage from '../pages/registration/login/LoginPage'
+import ProfilePage from '../pages/profilePage/ProfilePage'
+import PrivateRouter from '../components/privateRouter/PrivateRouter'
 
 const Router = () => {
     return (
@@ -12,7 +16,15 @@ const Router = () => {
                 <Route path='/' element={<Home />} />
                 <Route path='/basket' element={<Basket />} />
                 <Route path='/categories/man' element={<ManCollegtion />} />
+                {/* <Route path='/register' element={<Register />} /> */}
                 <Route path='*' element={<NotFoundPage />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/profile" element={
+                    <PrivateRouter>
+                        <ProfilePage />
+                    </PrivateRouter>
+                } />
             </Routes>
         </BrowserRouter>
     )
