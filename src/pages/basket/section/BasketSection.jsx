@@ -4,15 +4,21 @@ import { useDispatch, useSelector } from 'react-redux'
 import { deleteProductsFromBasketThunk, getProductsBasketThunk } from '../../../redux/reducers/basketSlice'
 import CardBasket from '../cardBasket/CardBasket'
 import { postProductsToBasketThunk } from '../../../redux/reducers/productSlice'
+import { useNavigate } from 'react-router-dom'
 
 const BasketSection = () => {
 
     const dispatch = useDispatch()
 
+    const navigate = useNavigate()
+
     const basket = useSelector((state) => state.basket.basket)
     const loading = useSelector((state) => state.basket.loading)
     const error = useSelector((state) => state.basket.error)
 
+    const GoDetail = (item) => {
+        navigate("/details", {state:{item}})
+    }
     
     const DeleteFromBasket = (id) => {
         dispatch(deleteProductsFromBasketThunk(id))
@@ -48,7 +54,7 @@ const BasketSection = () => {
         <div className={style.section}>
             <div className={style.container}>
                 <div className={style.productsBox}>
-                    {basket && basket.map(item => <CardBasket item={item} DeleteFromBasket={() => DeleteFromBasket(item._id)} IncreaseCount={() => IncreaseCount(item)} DecreaseCount={() => DecreaseCount(item)}   />)}
+                    {basket && basket.map(item => <CardBasket item={item} DeleteFromBasket={() => DeleteFromBasket(item._id)} IncreaseCount={() => IncreaseCount(item)} DecreaseCount={() => DecreaseCount(item)} GoDetail={() => GoDetail(item)}  />)}
                 </div>
                 <div className={style.buy}>
                     <h1>bu hisse trendyolun basketinden goturulub</h1>

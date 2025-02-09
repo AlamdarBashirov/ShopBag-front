@@ -7,7 +7,7 @@ export const getProductsBasketThunk = createAsyncThunk("basket/products", async 
 })
 
 export const deleteProductsFromBasketThunk = createAsyncThunk("basket/products/deleteItem", async(id) => {
-    const response = await axios.delete(`http://localhost:5500/basket/${id}`)
+    const response = await axios.delete(`http://localhost:5500/basket/${id}`)    
     return id
 })
 

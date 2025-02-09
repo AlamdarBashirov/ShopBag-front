@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './CardBasket.module.scss'
 
-const CardBasket = ({ item, DeleteFromBasket,DecreaseCount, IncreaseCount }) => {
+const CardBasket = ({ item, DeleteFromBasket,DecreaseCount, IncreaseCount, GoDetail }) => {
 
   const sum = item.count * item.price
 
@@ -9,7 +9,7 @@ const CardBasket = ({ item, DeleteFromBasket,DecreaseCount, IncreaseCount }) => 
     <div className={style.card}>
       <div className={style.info}>
         <img src={item.image} alt={item.title} />
-        <div className={style.details}>
+        <div className={style.details} onClick={GoDetail}>
           <p>{item.title}</p>
           <p>${item.price}</p>
           <p>Ölçü: {item.size}</p>

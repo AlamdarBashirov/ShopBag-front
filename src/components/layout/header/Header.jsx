@@ -31,7 +31,9 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className={style.headerActions}>
-                    <FaRegUser />
+                    <Link to='/profile'>
+                        <FaRegUser />
+                    </Link>
                     <FaRegHeart />
                     <Link to='/basket'>
                         <RiShoppingCartLine />
