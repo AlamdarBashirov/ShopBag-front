@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import style from './LoginPage.module.scss'
 
 
 const LoginPage = () => {
@@ -42,10 +43,24 @@ const LoginPage = () => {
     };
 
     return (
-        <div>
-            <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            <input type="password" placeholder="Şifre" value={password} onChange={(e) => setPassword(e.target.value)} />
-            <button onClick={handleLogin}>Giriş Yap</button>
+        <div className={style.section}>
+            <div className={style.container}>
+                <div className={style.loginForm}>
+                    <div className={style.loginText}>
+                        <h1>Login to Your Account</h1>
+                    </div>
+                    <div className={style.inputs}>
+                        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <input type="password" placeholder="Şifre" value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <button onClick={handleLogin} className={style.logButton} >Giriş Yap</button>
+                    </div>
+                </div>
+                <div className={style.toRegister}>
+                    <h1>New Here</h1>
+                    <h5>Sign Up and discover lots of new products</h5>
+                    <button className={style.toRegButton} onClick={() => navigate("/register")}>Register</button>
+                </div>
+            </div>
         </div>
     );
 };
