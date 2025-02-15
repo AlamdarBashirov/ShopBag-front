@@ -27,6 +27,7 @@ const Register = () => {
       <div className={style.container}>
         <div className={style.regIntro}>
           <h1>welcome</h1>
+          <h4>Your dream products are just one click away</h4>
         </div>
         <div className={style.regForm}>
           <h1>Create an Account</h1>
@@ -35,8 +36,8 @@ const Register = () => {
           <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
           <input type="text" placeholder="Telefon" value={phone} onChange={(e) => setPhone(e.target.value)} />
           <input type="password" placeholder="Şifre" value={password} onChange={(e) => setPassword(e.target.value)} />
-          <button onClick={handleRegister} className={style.regButton}>Qeydiyyatdan keç</button>
-          <span>Do You Have an Account <a href="/login">Log in</a></span>
+          <button onClick={handleRegister} className={style.regButton}>Sign Up</button>
+          <span>Do You Have an Account ? <a href="/login">Log in</a></span>
         </div>
       </div>
     </div>

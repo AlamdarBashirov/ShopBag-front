@@ -10,7 +10,6 @@ const NotFoundPage = () => {
     return (
         <Layout>
             <div className={style.section}>
-                <h1>Error 404. Not Found Page</h1>
                 <button onClick={() => navigate("/")}>Go Home</button>
             </div>
         </Layout>

@@ -7,7 +7,34 @@ export const getProductsHomeThunk = createAsyncThunk("home/popularProducts", asy
 })
 
 export const postProductsToBasketThunk = createAsyncThunk(
-    "home/products/sendBasket",
+  "home/products/sendBasket",
+  async (data) => {
+    try {
+      const res = await axios.get("http://localhost:5500/basket");
+      const currentProduct = res.data.find(item => item._id === data._id);
+
+      if (currentProduct) {
+        // Eğer ürün zaten sepette varsa, `PUT` ile count değerini güncelle
+        await axios.put(`http://localhost:5500/basket/${currentProduct._id}`, {
+          count: data.count,  // 1 veya -1 değerini gönderiyoruz
+        });
+      } else {
+        // Ürün sepette yoksa yeni ekle
+        await axios.post("http://localhost:5500/basket", {
+          ...data,
+          count: 1,
+        });
+      }
+    } catch (error) {
+      console.error("Hata oluştu:", error);
+    }
+  }
+);
+
+
+
+export const postProductsToBasketfromHomeThunk = createAsyncThunk(
+  "home/products/sendBasket",
     async (data) => {
       try {
         // Sepetteki ürünleri al
@@ -31,8 +58,8 @@ export const postProductsToBasketThunk = createAsyncThunk(
         console.error("Hata oluştu:", error);
       }
     }
-  );
-  
+
+);
   
 
 

@@ -6,8 +6,18 @@
 .section{
     display: flex;
     flex-direction: column;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 40px;
-    min-height: 50vh;
+    min-height: 65vh;
+    background-image: url('../../components/assets/images//404notFound.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    button{
+        position: absolute;
+        bottom: 0px;
+        padding: 20px 60px;
+    }
 }

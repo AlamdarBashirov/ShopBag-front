@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './ManCard.module.scss'
 
-const ManCard = ({item, AddBasket}) => {
+const ManCard = ({item, AddBasket, GoDetail}) => {
   return (
     <div>
         <img src={item.image} alt={item.title} />
@@ -9,7 +9,7 @@ const ManCard = ({item, AddBasket}) => {
         <p>${item.price}</p>
         <div className={style.buttons}>
             <button onClick={AddBasket}>Add Basket</button>
-            <button>Details</button>
+            <button onClick={GoDetail}>Details</button>
         </div>
     </div>
   )

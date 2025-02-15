@@ -57,7 +57,8 @@ const LoginPage = () => {
                 </div>
                 <div className={style.toRegister}>
                     <h1>New Here</h1>
-                    <h5>Sign Up and discover lots of new products</h5>
+                    <h4>Don't have an Account ?</h4>
+                    <h5>Register and start your journey!</h5>
                     <button className={style.toRegButton} onClick={() => navigate("/register")}>Register</button>
                 </div>
             </div>

@@ -25,19 +25,17 @@ const BasketSection = () => {
     }
 
     const IncreaseCount = (item) => {
-        // Count artırma işlemi için dispatch
-        const updatedItem = { ...item, count: item.count + 1 }
-        dispatch(postProductsToBasketThunk(updatedItem))
-    }
-
-    // Count azaltma
+        dispatch(postProductsToBasketThunk({ _id: item._id, count: 1 }));
+        setTimeout(() => {
+            window.location.reload();
+        }, 500)
+    };
+    
     const DecreaseCount = (item) => {
-        // Count 1'den az olmasın
         if (item.count > 1) {
-            const updatedItem = { ...item, count: item.count - 1 }
-            dispatch(postProductsToBasketThunk(updatedItem))
+            dispatch(postProductsToBasketThunk({ _id: item._id, count: -1 }));
         }
-    }
+    };
     
     // const IncreaseCount = (item) => {
     //      dispatch(postProductsToBasketThunk(item))

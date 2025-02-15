@@ -5,10 +5,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getProductsManCollegtion } from '../../../redux/reducers/manSlice'
 import ManCard from './cards/ManCard'
 import { postProductsToBasketThunk } from '../../../redux/reducers/productSlice'
+import { useNavigate } from 'react-router-dom'
 
 const ManCollegtion = () => {
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const products = useSelector((state) => state.manCollegtion.manCollegtion)
   const loading = useSelector((state) => state.manCollegtion.loading)
@@ -23,7 +25,7 @@ const ManCollegtion = () => {
 
   let pageNum = []
 
-  for(let i = 1; i <= Math.ceil(products.length / productsPage); i++) {
+  for (let i = 1; i <= Math.ceil(products.length / productsPage); i++) {
     pageNum.push(i)
   }
 
@@ -35,13 +37,17 @@ const ManCollegtion = () => {
     dispatch(postProductsToBasketThunk(item))
   }
 
+  const GoDetail = (item) => {
+    navigate("/details", { state: { item } })
+  }
+
   if (loading) return <div className={style.section}><h1>Yuklenir...</h1></div>
   if (error) return <div className={style.section}><h1>Xeta Bas Verdi</h1></div>
   return (
     <Layout>
       <div className={style.section}>
         <div className={style.container}>
-          {currentProducts && currentProducts.map(item=> <ManCard item={item}  AddBasket={() => AddBasket(item)} />)}
+          {currentProducts && currentProducts.map(item => <ManCard item={item} AddBasket={() => AddBasket(item)} GoDetail={() => GoDetail(item)}/>)}
         </div>
         <div>
           {pageNum && pageNum.map(item => {

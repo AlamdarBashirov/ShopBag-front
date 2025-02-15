@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import style from './popularProductsSection.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProductsHomeThunk, postProductsToBasketThunk } from '../../../../redux/reducers/productSlice';
+import { getProductsHomeThunk, postProductsToBasketfromHomeThunk, postProductsToBasketThunk } from '../../../../redux/reducers/productSlice';
 import PopularCard from './cards/PopularCard';
 
 const PopularProductsSection = () => {
@@ -17,7 +17,7 @@ const PopularProductsSection = () => {
     }, [dispatch]);
 
     const AddBasket = (item) => {
-        dispatch(postProductsToBasketThunk(item))
+        dispatch(postProductsToBasketfromHomeThunk(item))
     }
 
     const scrollLeft = () => {
