@@ -1,39 +1,191 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-.section{
+
+.section {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 80vh;
     width: 100%;
-    .container{
+    background-color: #f5f5f5;
+    .container {
         display: flex;
-        align-items: center;
+        align-items: start;
         justify-content: start;
         width: 80%;
-        background-color: aqua;
-        position: relative;
-        .productsBox{
+
+        .productsBox {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             width: 70%;
-            border: 1px solid black;
         }
-        .buy{
+
+        .buy {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
             width: 30%;
+            gap: 35px;
             border: 1px solid blue;
             height: 80vh;
-            position: absolute;
+            position: sticky;
             top: 0;
             right: 0;
+            margin-top: 20px;
+            border: 3px solid #e6e6e6;
+            border-radius: 10px;
         }
+    }
+}
+.orderBtn{
+    color: white;
+    background: #da5826;
+    padding: 10px;
+    border: #da5826;
+    transition: .5s;
+    &:hover{
+        background: #2c3e50;
+        transition: .5s;
+    }
+}
+
+.buyBox {
+    display: none;
+}
+
+.close {
+    display: none;
+    color: white;
+    background: red;
+    padding: 10px;
+    border: red;
+}
+
+@media screen and (max-width: 768px) {
+    .section {
+        align-items: start;
+
+        .container {
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+
+            .productsBox {
+                width: 90%;
+                flex-direction: column;
+            }
+
+            .buy {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                margin: 0;
+                /* Initially hidden */
+                width: 60%;
+                height: 100vh;
+                background-color: white;
+                box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+                transition: right 0.3s ease-in-out;
+                z-index: 1;
+
+                h1 {
+                    margin-top: 20px;
+                }
+            }
+
+            .buy.open {
+                right: 0;
+                /* Open when 'open' class is added */
+            }
+        }
+    }
+
+    .buyBox {
+        display: flex;
+        position: sticky;
+        top: 50%;
+        padding: 0;
+        margin: -40px;
+        transform: rotate(270deg);
+
+        .buyButton {
+            display: flex;
+            width: 150px;
+            cursor: pointer;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: black;
+        }
+    }
+
+    .close {
+        display: block;
+    }
+}
+@media screen and (min-width:769px) and (max-width:991px){
+    .section {
+        align-items: start;
+
+        .container {
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+
+            .productsBox {
+                width: 90%;
+                flex-direction: column;
+            }
+
+            .buy {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                margin: 0;
+                /* Initially hidden */
+                width: 40%;
+                height: 100vh;
+                background-color: white;
+                box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+                transition: right 0.3s ease-in-out;
+                z-index: 1;
+
+                h1 {
+                    margin-top: 20px;
+                }
+            }
+
+            .buy.open {
+                right: 0;
+                /* Open when 'open' class is added */
+            }
+        }
+    }
+
+    .buyBox {
+        display: flex;
+        position: sticky;
+        top: 50%;
+        padding: 0;
+        margin: -40px;
+        transform: rotate(270deg);
+
+        .buyButton {
+            display: flex;
+            width: 150px;
+            cursor: pointer;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: black;
+        }
+    }
+
+    .close {
+        display: block;
     }
 }

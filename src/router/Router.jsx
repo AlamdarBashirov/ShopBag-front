@@ -10,6 +10,7 @@ import ProfilePage from '../pages/profilePage/ProfilePage'
 import PrivateRouter from '../components/privateRouter/PrivateRouter'
 import DetailPage from '../pages/detailPage/DetailPage'
 import PaymentPage from '../pages/paymentPage/PaymentPage'
+import PaymentSuccesPage from '../pages/paymentPage/paymentSuccess/PaymentSuccesPage'
 
 const Router = () => {
     
@@ -22,6 +23,7 @@ const Router = () => {
                 <Route path='/details' element={<DetailPage />} />
                 <Route path='*' element={<NotFoundPage />} />
                 <Route path='/payment' element={<PaymentPage />} />
+                <Route path='/payment-success' element={<PaymentSuccesPage />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/profile" element={
