@@ -11,6 +11,7 @@ import PrivateRouter from '../components/privateRouter/PrivateRouter'
 import DetailPage from '../pages/detailPage/DetailPage'
 import PaymentPage from '../pages/paymentPage/PaymentPage'
 import PaymentSuccesPage from '../pages/paymentPage/paymentSuccess/PaymentSuccesPage'
+import WishlistPage from '../pages/wishlistPage/WishlistPage'
 
 const Router = () => {
     
@@ -19,6 +20,7 @@ const Router = () => {
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/basket' element={<Basket />} />
+                <Route path='/wishlist' element={<WishlistPage />} />
                 <Route path='/categories/man' element={<ManCollegtion />} />
                 <Route path='/details' element={<DetailPage />} />
                 <Route path='*' element={<NotFoundPage />} />

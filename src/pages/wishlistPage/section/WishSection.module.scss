@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 40px;
+    min-height: 80vh;
+    .container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80%;
+        height: 90%;
+        background-color: aqua;
+    }
+}

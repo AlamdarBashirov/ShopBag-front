@@ -26,7 +26,7 @@ const LoginPage = () => {
                 setUser(res.data);  // Local state güncelleniyor
                 localStorage.setItem("user", JSON.stringify(res.data));
                 // alert("Giriş başarılı!");
-
+                
                 //tokeni yadda saxla
                 localStorage.setItem("token", res.data.token);
 

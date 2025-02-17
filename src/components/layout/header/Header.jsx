@@ -34,7 +34,9 @@ const Header = () => {
                     <Link to='/profile'>
                         <FaRegUser />
                     </Link>
-                    <FaRegHeart />
+                    <Link to='/wishlist'>
+                        <FaRegHeart />
+                    </Link>
                     <Link to='/basket'>
                         <RiShoppingCartLine />
                     </Link>

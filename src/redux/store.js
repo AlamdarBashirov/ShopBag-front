@@ -4,6 +4,7 @@ import  basketSlice  from "./reducers/basketSlice";
 import manSlice from "./reducers/manSlice";
 import  profileSlice  from "./reducers/profileSlice";
 import  paymentSlice  from "./reducers/paymentSlice";
+import  wishlistSlice  from "./reducers/wishlistSlice";
 
 export const store = configureStore({
     reducer:{
@@ -11,6 +12,7 @@ export const store = configureStore({
         basket:basketSlice,
         profile: profileSlice,
         manCollegtion: manSlice,
-        payment: paymentSlice
+        payment: paymentSlice,
+        wishlist: wishlistSlice
     }
 })
