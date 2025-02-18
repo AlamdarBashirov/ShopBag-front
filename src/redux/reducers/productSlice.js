@@ -6,10 +6,22 @@ export const getProductsHomeThunk = createAsyncThunk("home/popularProducts", asy
   return response.data
 })
 
-export const postProductsToWishlistThunk = createAsyncThunk("products/sendWishlist", async (data) => {
-  const response = await axios.post("http://localhost:5500/wishlist", data)
-  return data
-})
+// export const postProductsToWishlistThunk = createAsyncThunk("products/sendWishlist", async (data) => {
+//   const response = await axios.post("http://localhost:5500/wishlist", data)
+//   return data
+// })
+
+export const postProductsToWishlistThunk = createAsyncThunk(
+  "products/sendWishlist",
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await axios.post("http://localhost:5500/wishlist", data);
+      return response.data; // API'nin döndürdüğü veriyi al
+    } catch (error) {
+      return rejectWithValue(error.response?.data || "Bir hata oluştu.");
+    }
+  }
+);
 
 export const postProductsToBasketThunk = createAsyncThunk(
   "home/products/sendBasket",
