@@ -103,6 +103,30 @@ box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.46);
     }
 }
 
+.dark {
+    background-color: #1a1a1a;
+    color: white;
+
+    .details p {
+        color: #f5f5f5;
+    }
+
+    .countBtn {
+        background-color: #333;
+        color: white;
+    }
+
+    .deleteBtn {
+        background-color: #c0392b;
+        color: white;
+    }
+
+    .cost h2 {
+        color: #f39c12;
+    }
+}
+
+
 @media screen and (max-width: 650px) {
     .card {
         flex-direction: column;

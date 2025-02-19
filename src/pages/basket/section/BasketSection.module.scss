@@ -11,6 +11,8 @@
     min-height: 80vh;
     width: 100%;
     background-color: #f5f5f5;
+    transition: background-color 0.3s ease;
+
     .container {
         display: flex;
         align-items: start;
@@ -30,26 +32,33 @@
             flex-direction: column;
             width: 30%;
             gap: 35px;
-            border: 1px solid blue;
+            border: 3px solid #e6e6e6;
+            border-radius: 10px;
             height: 80vh;
             position: sticky;
             top: 0;
             right: 0;
             margin-top: 20px;
-            border: 3px solid #e6e6e6;
-            border-radius: 10px;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
         }
     }
 }
-.orderBtn{
+
+.orderBtn {
     color: white;
     background: #da5826;
     padding: 10px;
-    border: #da5826;
-    transition: .5s;
-    &:hover{
+    border: none;
+    transition: 0.5s;
+    cursor: pointer;
+    border-radius: 5px;
+
+    &:hover {
         background: #2c3e50;
-        transition: .5s;
+        transition: 0.5s;
     }
 }
 
@@ -62,8 +71,38 @@
     color: white;
     background: red;
     padding: 10px;
-    border: red;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
 }
+
+/* 🌓 Dark Mode */
+[data-theme="dark"] {
+    background-color: #1a1a1a;
+    color: white;
+
+    .section {
+        background-color: #2a2a2a;
+    }
+
+    .container {
+        .buy {
+            background-color: #333;
+            border-color: #555;
+            color: white;
+        }
+
+        .orderBtn {
+            background: #444;
+            color: white;
+
+            &:hover {
+                background: #666;
+            }
+        }
+    }
+}
+
 
 @media screen and (max-width: 768px) {
     .section {

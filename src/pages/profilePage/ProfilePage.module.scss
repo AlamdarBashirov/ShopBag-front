@@ -35,3 +35,29 @@
     }
   }
 }
+
+.section {
+  background-color: white;
+  color: black;
+  transition: all 0.3s ease;
+
+  &.dark {
+    background-color: black;
+    color: white;
+  }
+}
+
+button {
+  // margin: 10px;
+  // padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  background: gray;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+
+  &:hover {
+    background: darkgray;
+  }
+}

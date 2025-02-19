@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import style from './popularProductsSection.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProductsHomeThunk, postProductsToBasketfromHomeThunk, postProductsToBasketThunk, postProductsToWishlistThunk } from '../../../../redux/reducers/productSlice';
+import { getProductsHomeThunk, postProductsToBasketfromHomeThunk, postProductsToWishlistThunk } from '../../../../redux/reducers/productSlice';
 import PopularCard from './cards/PopularCard';
 
 const PopularProductsSection = () => {
@@ -11,18 +11,19 @@ const PopularProductsSection = () => {
     const products = useSelector((state) => state.products.products);
     const loading = useSelector((state) => state.products.loading);
     const error = useSelector((state) => state.products.error);
+    const darkMode = useSelector((state) => state.theme.darkMode); // 🌓 Dark mode state
 
     useEffect(() => {
         dispatch(getProductsHomeThunk());
     }, [dispatch]);
 
     const AddBasket = (item) => {
-        dispatch(postProductsToBasketfromHomeThunk(item))
-    }
+        dispatch(postProductsToBasketfromHomeThunk(item));
+    };
 
     const AddWishlist = (item) => {
-        dispatch(postProductsToWishlistThunk(item))
-    }
+        dispatch(postProductsToWishlistThunk(item));
+    };
 
     const scrollLeft = () => {
         if (cardBoxRef.current) {
@@ -40,7 +41,7 @@ const PopularProductsSection = () => {
     if (error) return <div className={style.section}><h1>Xəta Baş Verdi</h1></div>;
 
     return (
-        <div className={style.section}>
+        <div className={`${style.section} ${darkMode ? style.dark : ''}`}> {/* 🌓 Dark Mode tətbiq edildi */}
             <div className={style.sectionName}>
                 <h1>Populyar Məhsullar</h1>
             </div>
@@ -50,7 +51,12 @@ const PopularProductsSection = () => {
                 )}
                 <div className={style.cardBox} ref={cardBoxRef}>
                     {products.map((item, index) => (
-                        <PopularCard key={item.id || index} item={item} AddBasket={() => AddBasket(item)} AddWishlist={() => AddWishlist(item)}  />
+                        <PopularCard 
+                            key={item.id || index} 
+                            item={item} 
+                            AddBasket={() => AddBasket(item)} 
+                            AddWishlist={() => AddWishlist(item)}  
+                        />
                     ))}
                 </div>
                 {products.length > 4 && (

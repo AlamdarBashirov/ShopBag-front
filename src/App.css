@@ -1,6 +1,37 @@
 .App {
   text-align: center;
 }
+/* Light mode (default) */
+body {
+  background-color: #ffffff;
+  color: #000000;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark mode */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+
+/* Dark mode üçün container-lər */
+.dark-mode .container {
+  background-color: #1e1e1e;
+  color: white;
+  border: 1px solid #ffffff;
+}
+
+.dark-mode .profile {
+  background-color: #333;
+  color: white;
+}
+
+.dark-mode .orders {
+  background-color: #444;
+  color: white;
+}
+
 
 .App-logo {
   height: 40vmin;
@@ -36,3 +67,5 @@
     transform: rotate(360deg);
   }
 }
+
+

@@ -1,12 +1,14 @@
-import React from 'react'
-import style from './CardBasket.module.scss'
+import React from 'react';
+import style from './CardBasket.module.scss';
+import { useSelector } from 'react-redux'; // 🌓 Redux-dan dark mode state-i almaq üçün
 
 const CardBasket = ({ item, DeleteFromBasket, DecreaseCount, IncreaseCount, GoDetail }) => {
+  const darkMode = useSelector((state) => state.theme.darkMode); // 🌓 Dark mode state
 
-  const sum = item.count * item.price
+  const sum = item.count * item.price;
 
   return (
-    <div className={style.card}>
+    <div className={`${style.card} ${darkMode ? style.dark : ''}`}> {/* 🌓 Dark mode tətbiq edildi */}
       <div className={style.info}>
         <div className={style.image}>
           <img src={item.image} alt={item.title} />
@@ -19,7 +21,7 @@ const CardBasket = ({ item, DeleteFromBasket, DecreaseCount, IncreaseCount, GoDe
           </div>
           <div className={style.buttons}>
             <div className={style.countTable}>
-              <button onClick={DecreaseCount} className={style.countBtn} >-</button>
+              <button onClick={DecreaseCount} className={style.countBtn}>-</button>
               <p className={style.count}>{item.count}</p>
               <button onClick={IncreaseCount} className={style.countBtn}>+</button>
             </div>
@@ -33,7 +35,7 @@ const CardBasket = ({ item, DeleteFromBasket, DecreaseCount, IncreaseCount, GoDe
         <h2>Total Price of the Products: ${sum}</h2>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CardBasket
+export default CardBasket;
