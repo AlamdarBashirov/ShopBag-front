@@ -1,18 +1,17 @@
-import React from 'react'
-import style from './PopularCard.module.scss'
+import React from 'react';
 
-const PopularCard = ({item, AddBasket, AddWishlist}) => {
+const PopularCard = ({ item, AddBasket, ToggleWishlist, isInWishlist }) => {
   return (
-    <div>
-        <img src={item.image} alt={item.title} />
-        <p>{item.title}</p>
-        <p>${item.price}</p>
-        <div className={style.buttons}>
-            <button onClick={AddBasket}>INDI AL</button>
-            <button onClick={AddWishlist}>Wish</button>
-        </div>
+    <div className="popular-card">
+      <img src={item.image} alt={item.title} />
+      <h3>{item.title}</h3>
+      <h3>$ {item.price}</h3>
+      <button onClick={AddBasket}>Add to Basket</button>
+      <button onClick={() => ToggleWishlist(item)}>
+        {isInWishlist ? "❤️" : "🤍"}
+      </button>
     </div>
-  )
-}
+  );
+};
 
-export default PopularCard
+export default PopularCard;

@@ -4,9 +4,9 @@ import WishSection from './section/WishSection'
 
 const WishlistPage = () => {
     return (
-        <Layout>
+        // <Layout>
             <WishSection/>  
-        </Layout>
+        // </Layout>
     )
 }
 

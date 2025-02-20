@@ -6,32 +6,36 @@ import { getProductsManCollegtion } from '../../../redux/reducers/manSlice'
 import ManCard from './cards/ManCard'
 import { postProductsToBasketThunk } from '../../../redux/reducers/productSlice'
 import { useNavigate } from 'react-router-dom'
+import { getCategoriesProductsThunk } from '../../../redux/reducers/categoriesSlice'
 
 const ManCollegtion = () => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const products = useSelector((state) => state.manCollegtion.manCollegtion)
-  const loading = useSelector((state) => state.manCollegtion.loading)
-  const error = useSelector((state) => state.manCollegtion.error)
+  const products = useSelector((state) => state.categories.categories)
+  const loading = useSelector((state) => state.categories.loading)
+  const error = useSelector((state) => state.categories.error)
 
+  useEffect(() => {
+    dispatch(getCategoriesProductsThunk())
+  }, [])
+
+
+  const filteredData = products.filter((product) =>  product.category === "man")
   const [page, setPage] = useState(1)
-  const [productsPage, setProductsPage] = useState(3)
+  const [productsPage, setProductsPage] = useState(16)
 
   const lastProductIndex = page * productsPage
   const firstProductIndex = lastProductIndex - productsPage
-  const currentProducts = products.slice(firstProductIndex, lastProductIndex)
+  const currentProducts = filteredData.slice(firstProductIndex, lastProductIndex)
 
   let pageNum = []
 
-  for (let i = 1; i <= Math.ceil(products.length / productsPage); i++) {
+  for (let i = 1; i <= Math.ceil(filteredData.length / productsPage); i++) {
     pageNum.push(i)
   }
 
-  useEffect(() => {
-    dispatch(getProductsManCollegtion())
-  }, [])
 
   const AddBasket = (item) => {
     dispatch(postProductsToBasketThunk(item))

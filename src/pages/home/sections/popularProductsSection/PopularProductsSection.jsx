@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import style from './popularProductsSection.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProductsHomeThunk, postProductsToBasketfromHomeThunk, postProductsToWishlistThunk } from '../../../../redux/reducers/productSlice';
+import { getProductsHomeThunk, postProductsToBasketfromHomeThunk } from '../../../../redux/reducers/productSlice';
+import { toggleWishlistThunk, getProductsWishlistThunk } from '../../../../redux/reducers/wishlistSlice';
 import PopularCard from './cards/PopularCard';
 
 const PopularProductsSection = () => {
@@ -9,20 +10,22 @@ const PopularProductsSection = () => {
     const dispatch = useDispatch();
 
     const products = useSelector((state) => state.products.products);
+    const wishlist = useSelector((state) => state.wishlist.wishlist); // ✅ Wishlist state
     const loading = useSelector((state) => state.products.loading);
     const error = useSelector((state) => state.products.error);
-    const darkMode = useSelector((state) => state.theme.darkMode); // 🌓 Dark mode state
+    const darkMode = useSelector((state) => state.theme.darkMode);
 
     useEffect(() => {
         dispatch(getProductsHomeThunk());
+        dispatch(getProductsWishlistThunk()); // ✅ Sayfa açıldığında wishlist-i yükləyir
     }, [dispatch]);
 
     const AddBasket = (item) => {
         dispatch(postProductsToBasketfromHomeThunk(item));
     };
 
-    const AddWishlist = (item) => {
-        dispatch(postProductsToWishlistThunk(item));
+    const ToggleWishlist = (item) => {
+        dispatch(toggleWishlistThunk(item));
     };
 
     const scrollLeft = () => {
@@ -41,7 +44,7 @@ const PopularProductsSection = () => {
     if (error) return <div className={style.section}><h1>Xəta Baş Verdi</h1></div>;
 
     return (
-        <div className={`${style.section} ${darkMode ? style.dark : ''}`}> {/* 🌓 Dark Mode tətbiq edildi */}
+        <div className={`${style.section} ${darkMode ? style.dark : ''}`}>
             <div className={style.sectionName}>
                 <h1>Populyar Məhsullar</h1>
             </div>
@@ -55,7 +58,8 @@ const PopularProductsSection = () => {
                             key={item.id || index} 
                             item={item} 
                             AddBasket={() => AddBasket(item)} 
-                            AddWishlist={() => AddWishlist(item)}  
+                            ToggleWishlist={() => ToggleWishlist(item)}  
+                            isInWishlist={wishlist.some((wishItem) => wishItem._id === item._id)} // ✅ Dərhal dəyişir
                         />
                     ))}
                 </div>

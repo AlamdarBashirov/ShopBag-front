@@ -3,7 +3,7 @@ import style from './ManCard.module.scss'
 
 const ManCard = ({item, AddBasket, GoDetail}) => {
   return (
-    <div>
+    <div className={style.card}>
         <img src={item.image} alt={item.title} />
         <p>{item.title}</p>
         <p>${item.price}</p>
