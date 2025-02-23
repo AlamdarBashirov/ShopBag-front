@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import style from './ManCollegtion.module.scss';
+import style from './BabyCollegtion.module.scss';
 import Layout from '../../../components/layout/Layout';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductsManCollegtion } from '../../../redux/reducers/manSlice';
-import ManCard from './cards/ManCard';
 import { getProductsHomeThunk, postProductsToBasketfromHomeThunk, postProductsToBasketThunk } from '../../../redux/reducers/productSlice';
 import { useNavigate } from 'react-router-dom';
-import { getCategoriesProductsThunk } from '../../../redux/reducers/categoriesSlice';
+import BabyCard from './cards/BabyCard';
 
-const ManCollegtion = () => {
+const BabyCollegtion = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -20,7 +19,7 @@ const ManCollegtion = () => {
         dispatch(getProductsHomeThunk());
     }, [dispatch]);
 
-    const filteredData = products.filter((product) => product.category === "man");
+    const filteredData = products.filter((product) => product.category === "baby");
     const [page, setPage] = useState(1);
     const [productsPage, setProductsPage] = useState(16);
 
@@ -50,7 +49,7 @@ const ManCollegtion = () => {
             <div className={style.section}>
                 <div className={style.container}>
                     {currentProducts && currentProducts.map(item => (
-                        <ManCard key={item._id} item={item} AddBasket={() => AddBasket(item)} GoDetail={() => GoDetail(item)} />
+                        <BabyCard key={item._id} item={item} AddBasket={() => AddBasket(item)} GoDetail={() => GoDetail(item)} />
                     ))}
                 </div>
                 <div className={style.pagination}>
@@ -63,4 +62,4 @@ const ManCollegtion = () => {
     );
 };
 
-export default ManCollegtion;
+export default BabyCollegtion;

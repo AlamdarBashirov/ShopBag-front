@@ -7,9 +7,8 @@ const IntroSection = () => {
         <div className={style.section}>
             <div className={style.container}>
                 <div className={style.textBox}>
-                    <h1>Sizə lazım olan hərşey</h1>
-                    <p>Yeni görünüş, yeni stil</p>
-                    <button>İNDİ AL</button>
+                    <h1>The fashion you are looking for is here.</h1>
+                    <p>New look, new style</p>
                 </div>
             </div>
         </div>

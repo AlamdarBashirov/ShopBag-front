@@ -6,22 +6,30 @@ export const getProductsHomeThunk = createAsyncThunk("home/popularProducts", asy
   return response.data
 })
 
-// export const postProductsToWishlistThunk = createAsyncThunk("products/sendWishlist", async (data) => {
-//   const response = await axios.post("http://localhost:5500/wishlist", data)
-//   return data
-// })
-
 export const postProductsToWishlistThunk = createAsyncThunk(
   "products/sendWishlist",
-  async (data, { rejectWithValue }) => {
+  async (data, { getState, rejectWithValue }) => {
     try {
-      const response = await axios.post("http://localhost:5500/wishlist", data);
-      return response.data; // API'nin döndürdüğü veriyi al
+      const userId = getState().profile.userId; 
+      const token = getState().profile.token; // Redux-dan tokeni alırıq
+
+      if (!userId || !token) {
+        return rejectWithValue("User not authenticated.");
+      }
+
+      const response = await axios.post(
+        "http://localhost:5500/wishlist",
+        { ...data, userId },
+        { headers: { Authorization: `Bearer ${token}` } } // Tokeni göndəririk
+      );
+
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || "Bir hata oluştu.");
     }
   }
 );
+
 
 export const postProductsToBasketThunk = createAsyncThunk(
   "home/products/sendBasket",
@@ -48,11 +56,54 @@ export const postProductsToBasketThunk = createAsyncThunk(
   }
 );
 
+// export const postProductsToBasketThunk = createAsyncThunk(
+//   "home/products/sendBasket",
+//   async (data, { getState }) => {
+//     try {
+//       const token = getState().profile.token; // Tokeni Redux store-dan alırıq
+
+//       if (!token) {
+//         console.error("İstifadəçi daxil olmadan səbətə məhsul əlavə edilə bilməz.");
+//         return;
+//       }
+
+//       // Sepetteki ürünleri al
+//       const res = await axios.get("http://localhost:5500/basket");
+//       const currentProduct = res.data.find(item => item._id === data._id);
+
+//       if (currentProduct) {
+//         // Eğer ürün zaten sepette varsa, `PUT` ile count değerini güncelle
+//         await axios.put(`http://localhost:5500/basket/${currentProduct._id}`, {
+//           count: currentProduct.count + data.count,  // count değerini artırıyoruz veya azaltıyoruz
+//         }, {
+//           headers: {
+//             Authorization: `Bearer ${token}`, // Tokeni əlavə edirik
+//           },
+//         });
+//       } else {
+//         // Ürün sepette yoksa yeni ekle
+//         await axios.post("http://localhost:5500/basket", {
+//           ...data,
+//           count: 1,
+//         }, {
+//           headers: {
+//             Authorization: `Bearer ${token}`, // Tokeni əlavə edirik
+//           },
+//         });
+//       }
+//     } catch (error) {
+//       console.error("Hata oluştu:", error);
+//     }
+//   }
+// );
+
+
+
 
 
 export const postProductsToBasketfromHomeThunk = createAsyncThunk(
   "home/products/sendBasket",
-  async (data) => {
+  async (data, { rejectWithValue }) => {
     try {
       // Sepetteki ürünleri al
       const res = await axios.get("http://localhost:5500/basket");
@@ -73,6 +124,7 @@ export const postProductsToBasketfromHomeThunk = createAsyncThunk(
       }
     } catch (error) {
       console.error("Hata oluştu:", error);
+      // return rejectWithValue(error.response?.data?.message || "Ürün eklenirken hata oluştu.");
     }
   }
 

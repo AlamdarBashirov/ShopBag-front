@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import style from './BasketSection.module.scss';
+import style from './BasketSection.module.scss'
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteProductsFromBasketThunk, getProductsBasketThunk } from '../../../redux/reducers/basketSlice';
 import CardBasket from '../cardBasket/CardBasket';
@@ -51,9 +51,9 @@ const BasketSection = () => {
     let total = basket.length > 0 ? basket.map(item => item.price * item.count).reduce((a, b) => a + b) : 0;
     let number = basket.length > 0 ? basket.map(item => item.count).reduce((a, b) => a + b) : 0;
 
-    if (loading) return <div className={style.loader}><ClipLoader color="#DA5826" size={70} /></div>;
-    if (error) return <div className={style.error}><h1>Xeta Bas Verdi</h1></div>;
-    if (basket.length === 0) return <div className={style.emptyBasket}><h1>You have not added any products to your cart.</h1></div>;
+    if (loading) return <div className={style.loader} style={{ display: 'flex', alignItems: "center", justifyContent: 'center', height: '100vh', width: '100%' }} ><ClipLoader color="#DA5826" size={70} /></div>;
+    if (error) return <div className={style.error} style={{ display: 'flex', alignItems: "center", justifyContent: 'center', height: '100vh', width: '100%' }} ><h1>Xeta Bas Verdi</h1></div>;
+    if (basket.length === 0) return <div className={style.emptyBasket} style={{ display: 'flex', alignItems: "center", justifyContent: 'center', height: '100vh', width: '100%' }} ><h1>You have not added any products to your cart.</h1></div>;
 
     return (
         <div className={`${style.section} ${isDarkMode ? style.dark : ''}`}>
@@ -80,9 +80,9 @@ const BasketSection = () => {
             </div>
             <div className={style.buyBox}>
                 <button className={style.buyButton} onClick={() => setIsBuyOpen(true)}>Total Orders</button>
-                <button className={style.darkModeBtn} onClick={toggleDarkMode}>
+                {/* <button className={style.darkModeBtn} onClick={toggleDarkMode}>
                     {isDarkMode ? 'Light Mode' : 'Dark Mode'}
-                </button>
+                </button> */}
             </div>
         </div>
     );

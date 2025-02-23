@@ -20,13 +20,17 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             gap: 20px;
+            text-align: center;
             h1{
                 color: #DA5826;
                 font-size: 50px;
             }
             p{
                 font-size: 30px;
+                color: #2C3E50;
+                font-weight: 600;
             }
             button{
                 padding: 15px 40px;
@@ -49,6 +53,11 @@
     .section{
         .container{
             height: 60%;
+            .textBox{
+                h1{
+                    font-size: 35px;
+                }
+            }
         }
     }
 }

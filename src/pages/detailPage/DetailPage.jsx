@@ -34,11 +34,11 @@ const DetailPage = () => {
               </div>
               <div className={style.description}>
                 <h3>Description:</h3>
-                <p>${item.description}</p>
+                <p>{item.description}</p>
               </div>
               <div className={style.size}>
                 <h3>Size:</h3>
-                <p>S L XL M VS</p>
+                <p>{item.size}</p>
               </div>
             </div>
             <div className={style.addCart}>

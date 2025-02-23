@@ -31,6 +31,47 @@ body.dark-mode {
   background-color: #444;
   color: white;
 }
+.dark-mode .header {
+  background-color: #444;
+  color: white;
+}
+
+
+:root {
+  --bg-light: #ffffff;
+  --text-light: #000000;
+  --primary-light: #da5826;
+  
+  --bg-dark: #1e1e1e;
+  --text-dark: #ffffff;
+  --primary-dark: #bb86fc;
+}
+
+body {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] {
+  body {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+  }
+
+  .header, .footer {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+
+    a, svg {
+      color: var(--text-dark);
+    }
+
+    svg:hover, a:hover {
+      color: var(--primary-dark);
+    }
+  }
+}
 
 
 .App-logo {

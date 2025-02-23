@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 .footer{
+    // background-color: #f5f5f5;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,7 +13,7 @@
     width: 100%;
     height: auto;
     padding: 40px 0px;
-    background-color: #2C3E50;
+    // background-color: #2C3E50;
     .headOfFooter{
         display: flex;
         align-items: center;
@@ -24,11 +25,20 @@
                 width: 130px;
             }
         }
+        
+    }
+    .container{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 80%;
+        height: auto;
+        padding: 20px 0px;
         .iconBox{
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: black;
             gap: 10px;
             svg{
                 font-size: 25px;
@@ -40,32 +50,38 @@
                 }
             }
         }
-    }
-    .container{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 80%;
-        height: auto;
-        padding: 20px 0px;
         .heading{
             display: flex;
             flex-direction: column;
             gap: 15px;
+            .headingName{
+                h4{
+                    text-transform: uppercase;
+                    font-family: Verdana, Geneva, Tahoma, sans-serif;
+                }
+            }
             .headingComponents{
+
                 ul{
                     display: flex;
                     flex-direction: column;
-                    gap: 10px;
+                    gap: 15px;
                     li{
                         list-style: none;
                         a{
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
                             color: black;
                             text-decoration: none;
                             transition: .5s;
+                            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
                             &:hover{
                                 color: #da5826;
                                 transition: .5s;
+                            }
+                            svg{
+                                font-size: 20px;
                             }
                         }
                     }
@@ -74,3 +90,109 @@
         }
     }
 }
+
+@media screen and (min-width:480px) and (max-width:895px) {
+    .footer {
+        padding: 20px 0px;
+        .headOfFooter {
+            // flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 90%;
+            .logo{
+                // background-color: #da5826;
+                img {
+                width: 150px;
+            }}
+            .slogan h1 {
+                font-size: 1.2rem;
+                text-align: center;
+                display: none;
+            }
+            .iconBox {
+                gap: 15px;
+                width: 40%;
+                align-items: center;
+                justify-content: start;
+                svg {
+                    font-size: 25px;
+                }
+            }
+        }
+        .container {
+            // flex-direction: column;
+            align-items: start;
+            flex-wrap: wrap;
+            gap: 40px;
+            width: 90%;
+            
+            .heading {
+                width: 40%;
+                align-items: start;
+                .headingName h4 {
+                    font-size: 20px;
+                    text-align: center;
+                }
+                .headingComponents ul {
+                    align-items: start;
+                    li a {
+                        font-size: 16px;
+                    }
+                }
+            }
+            .contactUs{
+                width: 100%;
+            }
+        }
+    }
+}
+@media screen and (max-width:480px){
+    .footer {
+        padding: 20px 0px;
+        .headOfFooter {
+            flex-direction: column;
+            align-items: start;
+            gap: 20px;
+            width: 90%;
+            .logo{
+                // background-color: #da5826;
+                img {
+                width: 150px;
+            }}
+            .slogan h1 {
+                font-size: 1.2rem;
+                text-align: center;
+                display: none;
+            }
+            .iconBox {
+                gap: 15px;
+                svg {
+                    font-size: 20px;
+                }
+            }
+        }
+        .container {
+            flex-direction: column;
+            align-items: start;
+            gap: 20px;
+            width: 90%;
+            .heading {
+                width: 100%;
+                align-items: start;
+                // background-c olor: #da5826;
+                .headingName h4 {
+                    font-size: 1rem;
+                    text-align: center;
+                }
+                .headingComponents ul {
+                    align-items: start;
+                    li a {
+                        font-size: 0.9rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+

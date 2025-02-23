@@ -11,15 +11,15 @@ const CategoriesSection = () => {
       <div className={style.container}>
         <div className={`${style.card} ${style.men}`}>
           <h1>Men's <br />collection</h1>
-          <button onClick={() => navigate('/categories/man')}>İndi Al</button>
+          <button onClick={() => navigate('/categories/man')}>More</button>
         </div>
         <div className={`${style.card} ${style.women}`}>
           <h1>Women's <br /> collection</h1>
-          <button>İndi Al</button>
+          <button onClick={() => navigate('/categories/woman')}>More</button>
         </div>
         <div className={`${style.card} ${style.baby}`}>
           <h1>Baby's <br />collection</h1>
-          <button>İndi Al</button>
+          <button onClick={() => navigate('/categories/baby')}>More</button>
         </div>
       </div>
     </div>

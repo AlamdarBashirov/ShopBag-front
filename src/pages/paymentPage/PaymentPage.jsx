@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createPaymentIntentThunk } from "../../redux/reducers/paymentSlice";
+import { createOrderThunk } from "../../redux/reducers/adminSlice";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements, PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -13,11 +14,24 @@ const stripePromise = loadStripe("pk_test_51Qs0GgRrXWB8g0vCz5OLz5STqKYdsL9VH2kzp
 const CheckoutForm = ({ total }) => {
   const stripe = useStripe();
   const elements = useElements();
+  const dispatch = useDispatch();
+  const basket = useSelector((state) => state.basket.basket);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-  const [amount, setAmount] = useState(total);
   const navigate = useNavigate();
 
+  // Sifariş yaratmaq funksiyası
+  const handleOrder = async () => {
+    console.log(basket);
+    
+    const orderData = {
+      orderItems: basket,
+      totalPrice: total,
+    };
+
+    await dispatch(createOrderThunk(orderData));
+    navigate("/payment-success"); // Ödəniş uğurlu səhifəsinə yönləndir
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,7 +52,7 @@ const CheckoutForm = ({ total }) => {
       setMessage(error.message);
     } else if (paymentIntent && paymentIntent.status === "succeeded") {
       setMessage("Payment successfully completed! ✅");
-      navigate("/payment-success")
+      await handleOrder(); // Ödəniş uğurlu olduqda sifariş yarat
     }
 
     setLoading(false);
@@ -49,15 +63,7 @@ const CheckoutForm = ({ total }) => {
       <PaymentElement />
       <div className={style.amount}>
         <label htmlFor="amount">Total Amount:</label>
-        <input
-          type="string"
-          id="amount"
-          readOnly
-          value={` ${amount} USD`}
-          onChange={(e) => setAmount(e.target.value)}
-          min="0"
-          step="0.01"
-        />
+        <input type="text" id="amount" readOnly value={` ${total} USD`} />
       </div>
       <button className={style.payButton} disabled={!stripe || loading} style={{ marginTop: "20px" }}>
         {loading ? "Paid..." : `Pay $ ${total}`}
@@ -70,17 +76,18 @@ const CheckoutForm = ({ total }) => {
 const PaymentPage = () => {
   const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
   const { total } = location.state;
   const { payment, loading, error } = useSelector((state) => state.payment);
-  const [amount, setAmount] = useState(total);
+  const [amount, setAmount] = useState(parseFloat(total)); // Total dəyərini float kimi saxla
 
   useEffect(() => {
-    dispatch(createPaymentIntentThunk(amount * 100)); // Toplam tutar için intent yaradırıq (cent cinsinden)
+    dispatch(createPaymentIntentThunk(amount * 100)); // Ödəniş intenti yarat (cent cinsindən)
   }, [dispatch, amount]);
 
   const options = payment ? { clientSecret: payment } : null;
 
-  console.log("📢 payment value:", payment);  // 🔍 Debug
+  console.log("📢 payment value:", payment); // Debug üçün
 
   return (
     <div className={style.section}>

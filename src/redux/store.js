@@ -7,6 +7,7 @@ import  paymentSlice  from "./reducers/paymentSlice";
 import  wishlistSlice  from "./reducers/wishlistSlice";
 import  themeSlice  from "./reducers/themeSlice";
 import  categoriesSlice  from "./reducers/categoriesSlice";
+import  adminSlice  from "./reducers/adminSlice";
 
 export const store = configureStore({
     reducer:{
@@ -17,6 +18,7 @@ export const store = configureStore({
         payment: paymentSlice,
         wishlist: wishlistSlice,
         theme: themeSlice,
-        categories: categoriesSlice
+        categories: categoriesSlice,
+        admin: adminSlice
     }
 })

@@ -1,21 +1,22 @@
 import React from 'react'
 import style from './ProfileInfoCard.module.scss'
 
-const ProfileInfoCard = ({item, logOut, deleteAccount}) => {
+const ProfileInfoCard = ({ item, logOut, deleteAccount }) => {
   return (
     <div className={style.card}>
-        <div className={style.nameBox}>
-            <h4>{item.firstname}</h4>
-            <h4>{item.lastname}</h4>
-        </div>
-        <p>email: {item.email}</p>
-
+      <div className={style.nameBox}>
+        <h2>First Name: {item.firstname}</h2>
+        <h2>Last Name: {item.lastname}</h2>
+      </div>
+      <div className={style.contactBox}>
+        <h2>email: {item.email}</h2>
+        <h2>phone: {item.phone}</h2>
+      </div>
+      <div className={style.buttons}>
         <div className={style.logOutButton}>
-            <button onClick={logOut}>Log Out</button>
+          <button onClick={logOut}>Log Out</button>
         </div>
-        <div className={style.deleteAccount}>
-            <button onClick={deleteAccount}>delete account</button>
-        </div>
+      </div>
     </div>
   )
 }

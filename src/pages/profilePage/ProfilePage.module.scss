@@ -1,63 +1,76 @@
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-
-.section{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100%;
-  background-color: #f5f5f5;
-  .container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 80%;
-    height: 90%;
-    border: 2px solid black;
-    .profile{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 30%;
-      height: 100%;
-      background-color: aqua;
-    }
-    .orders{
-      width: 70%;
-      height: 100%;
-      background-color: bisque;
-    }
-  }
-}
-
 .section {
-  background-color: white;
-  color: black;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--bg-color);
+  transition: background 0.3s ease;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  padding: 20px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 
-  &.dark {
-    background-color: black;
-    color: white;
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
   }
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  padding: 20px;
+  background: var(--secondary-bg);
+  border-radius: 12px;
+}
+
+.orders {
+  padding: 20px;
+  background: var(--secondary-bg);
+  border-radius: 12px;
+  min-height: 300px;
 }
 
 button {
-  // margin: 10px;
-  // padding: 10px 20px;
+  padding: 10px 15px;
   border: none;
-  cursor: pointer;
-  background: gray;
+  border-radius: 8px;
+  background: var(--primary-color);
   color: white;
-  font-size: 16px;
-  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
 
   &:hover {
-    background: darkgray;
+    background: var(--primary-dark);
   }
+}
+
+/* Dark Mode */
+.dark {
+  --bg-color: #121212;
+  --card-bg: #1e1e1e;
+  --secondary-bg: #252525;
+  --primary-color: #bb86fc;
+  --primary-dark: #9b59b6;
+  color: white;
+}
+
+/* Light Mode */
+:root {
+  --bg-color: #f5f5f5;
+  --card-bg: #ffffff;
+  --secondary-bg: #f0f0f0;
+  --primary-color: #6200ea;
+  --primary-dark: #4b00b5;
 }

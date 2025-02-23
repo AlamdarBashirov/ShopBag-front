@@ -47,9 +47,6 @@ const ProfilePage = () => {
   return (
     <Layout>
       <div className={`${style.section} ${darkMode ? style.dark : ""}`}>
-        <button onClick={handleDarkModeToggle}>
-          {darkMode ? "Light Mode" : "Dark Mode"}
-        </button>
         <div className={style.container}>
           <div className={style.profile}>
             {infos.map(item => (
@@ -60,8 +57,13 @@ const ProfilePage = () => {
                 deleteAccount={() => deleteAccount(item._id)}
               />
             ))}
+            <button onClick={handleDarkModeToggle}>
+              {darkMode ? "Light Mode" : "Dark Mode"}
+            </button>
           </div>
-          <div className={style.orders}></div>
+          <div className={style.orders}>
+            sifarislerin
+          </div>
         </div>
       </div>
     </Layout>
